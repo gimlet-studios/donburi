@@ -275,7 +275,7 @@ func (t *TransformData) UnmarshalBinary(data []byte) error {
 
 	// mask and grab right most bits, py
 	// left shift px then do the same masking
-	py, px := uint32(pos&0xFFFFFFFF), uint32((pos>>32)&0xFFFFFFFF)
+	px, py := uint32(pos&0xFFFFFFFF), uint32((pos>>32)&0xFFFFFFFF)
 	t.LocalPosition.X, t.LocalPosition.Y = float64(math.Float32frombits(px)), float64(math.Float32frombits(py))
 	t.LocalRotation = float64(rot)
 
