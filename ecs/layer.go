@@ -26,7 +26,7 @@ func invoke(fn any, e *ECS, arg any) {
 }
 
 func (l *Layer) draw(e *ECS, arg any) {
-	key := keyForType(reflect.TypeOf(arg))
+	key := keyForType(reflect.TypeOf(arg).Elem())
 	for _, fn := range l.renderers[key] {
 		invoke(fn, e, arg)
 	}
@@ -48,7 +48,7 @@ func (l *Layer) addRenderer(r any) {
 		panic("renderer must not have return values")
 	}
 	// add renderer
-	key := keyForType(typ.In(1))
+	key := keyForType(typ.In(1).Elem())
 	l.renderers[key] = append(l.renderers[key], r)
 }
 
