@@ -2,22 +2,24 @@ package ecs
 
 import (
 	"fmt"
-	"reflect"
+	"unique"
+
+	"github.com/goccy/go-reflect"
 
 	"github.com/yohamta/donburi"
 )
 
 type Layer struct {
 	*layer
-	renderers map[string][]any
+	renderers map[unique.Handle[string]][]any
 }
 
 func newLayer(l *layer) *Layer {
-	return &Layer{l, make(map[string][]any)}
+	return &Layer{layer: l, renderers: make(map[unique.Handle[string]][]any)}
 }
 
-func keyForType(typ reflect.Type) string {
-	return fmt.Sprintf("%s/%s", typ.PkgPath(), typ.Name())
+func keyForType(typ reflect.Type) unique.Handle[string] {
+	return unique.Make(typ.String())
 }
 
 func invoke(fn any, e *ECS, arg any) {
