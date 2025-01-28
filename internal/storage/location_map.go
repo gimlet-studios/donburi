@@ -28,7 +28,7 @@ func (lm *LocationMap) Remove(id EntityId) {
 
 // Insert inserts the given entity id and archetype index to the storage.
 func (lm *LocationMap) Insert(id EntityId, archetype ArchetypeIndex, component ComponentIndex) {
-	if int(id) == len(lm.LocationMap) {
+	if int(id) >= len(lm.LocationMap) {
 		loc := NewLocation(archetype, component)
 		lm.LocationMap = append(lm.LocationMap, loc)
 		lm.Len++

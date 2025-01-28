@@ -18,6 +18,7 @@ require (
 	github.com/ebitengine/purego v0.6.0 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
+	github.com/goccy/go-reflect v1.2.0 // indirect
 	github.com/jaypipes/pcidb v1.0.0 // indirect
 	github.com/jezek/xgb v1.1.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
